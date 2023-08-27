@@ -54,8 +54,6 @@
         <thead class="thead-dark">
         <tr>
             <th class="w-tanggal">Tanggal</th>
-            <th>Sesi</th>
-            <th>Ruang</th>
             <th>NIM</th>
             <th>Nama</th>
             <th>DPU</th>
@@ -70,8 +68,6 @@
         <tfoot class="thead-dark">
         <tr>
             <th class="w-tanggal">Tanggal</th>
-            <th>Sesi</th>
-            <th>Ruang</th>
             <th>NIM</th>
             <th>Nama</th>
             <th>DPU</th>
@@ -84,30 +80,6 @@
         </tr>
         </tfoot>
     </table>
-    <strong>Keterangan:</strong> <br>
-    <!-- Proposal
-    <strong>Sesi</strong> <br>
-    Sesi 1 = 08.00 - 08.50 <br>
-    Sesi 2 = 09.00 - 09.50 <br>
-    Sesi 3 = 10.00 - 10.50 <br>
-    Sesi 4 = 11.00 - 11.50 <br>
-    Sesi 5 = 12.00 - 12.50 <br>
-    Istirahat <br>
-    Sesi 6 = 13.00 - 13.50 <br>
-    Sesi 7 = 14.00 - 14.50 <br>
-    Sesi 8 = 15.00 - 15.50 <br>
-    Sesi 9 = 16.00 - 16.50 <br>
-    -->
-    <strong>Sesi</strong> <br>
-    Sesi 1 = 08.00 - 09.40 <br>
-    Sesi 2 = 10.00 - 11.40 <br>
-    Sesi 3 = 12.00 - 13.40 <br>
-    Istirahat <br>
-    Sesi 4 = 14.00 - 15.40 <br>
-    Sesi 5 = 16.00 - 17.40 <br>
-    
-    <strong>Ruangan</strong> <br>
-    TIK.203 = Lab Studio Broadcasting di Gedung TIK Lantai II Sayap Kiri
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -125,8 +97,6 @@
             processing: true,
             columns: [
                 { data: 'tanggal' },
-                { data: 'sesi.id' },
-                { data: 'ruangan.kode_ruangan' },
                 { data: 'mahasiswa.nim' },
                 { data: 'mahasiswa.nama' },
                 { data: 'dpu.nama_lengkap' },
