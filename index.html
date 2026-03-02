@@ -69,17 +69,6 @@
         </tr>
         </tfoot>
     </table>
-    <hr>
-    <strong>Keterangan:</strong> <br>
-    <hr>
-    <strong>Sesi</strong> <br>
-    Jam 12.00 - 13.30 = Waktu ISHOMA <br>
-    <hr>
-    <strong>Ruangan</strong> <br>
-    TIK.300A = Ruang Rapat <br>
-    TIK.300B = Ruang Seminar <br>
-    TIK.110 = Lab Cloud Computing
-    <hr>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -97,12 +86,14 @@
             processing: true,
             columns: [
                 { data: 'tanggal' },
-                { data: 'nim' },
-                { data: 'nama_mahasiswa' },
-                { data: 'ketua' },
-                { data: 'sekretaris' },
-                { data: 'pembahas_1' },                
-                { data: 'pembahas_2' },
+                { data: 'sesi.id' },
+                { data: 'ruangan.kode_ruangan' },
+                { data: 'mahasiswa.nim' },
+                { data: 'mahasiswa.nama_mahasiswa' },
+                { data: 'ketua.nama_lengkap' },
+                { data: 'sekretaris.nama_lengkap' },
+                { data: 'pembahas_1.nama_lengkap' },                
+                { data: 'pembahas_2.nama_lengkap' },
             ],
             lengthChange: false,
             dom: 'Bfrtip',
