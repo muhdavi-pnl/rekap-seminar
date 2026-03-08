@@ -99,6 +99,8 @@ function capitalizeRenderer(data) {
     return toTitleCase(data);
 }
 
+let scrollInterval;
+
 function autoScrollTable() {
 
     let tableBody = $('.dataTables_scrollBody');
@@ -106,11 +108,10 @@ function autoScrollTable() {
     let height = tableBody.height();
 
     let scrollPosition = 0;
-    let speed = 1;
 
-    setInterval(function () {
+    scrollInterval = setInterval(function () {
 
-        scrollPosition += speed;
+        scrollPosition++;
 
         tableBody.scrollTop(scrollPosition);
 
@@ -118,7 +119,7 @@ function autoScrollTable() {
             scrollPosition = 0;
         }
 
-    }, 50);
+    }, 100);
 
 }
 
@@ -192,14 +193,26 @@ $(document).ready(function () {
 
     });
 
+    // Jalankan scroll pertama
     table.on('draw', function () {
+        clearInterval(scrollInterval);
         autoScrollTable();
     });
 
-    // ✅ auto refresh data setiap 60 detik
+    // Auto refresh tiap 1 menit
     setInterval(function () {
-        table.ajax.reload(null, false);
-    }, 60000);
+
+        // stop scroll
+        clearInterval(scrollInterval);
+
+        table.ajax.reload(function () {
+
+            // start scroll lagi setelah reload
+            autoScrollTable();
+
+        }, false);
+
+    }, 300000);
 
 });
 
