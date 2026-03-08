@@ -99,6 +99,29 @@ function capitalizeRenderer(data) {
     return toTitleCase(data);
 }
 
+function autoScrollTable() {
+
+    let tableBody = $('.dataTables_scrollBody');
+    let scrollHeight = tableBody[0].scrollHeight;
+    let height = tableBody.height();
+
+    let scrollPosition = 0;
+    let speed = 1;
+
+    setInterval(function () {
+
+        scrollPosition += speed;
+
+        tableBody.scrollTop(scrollPosition);
+
+        if (scrollPosition >= (scrollHeight - height)) {
+            scrollPosition = 0;
+        }
+
+    }, 50);
+
+}
+
 $(document).ready(function () {
 
     $('#rekap').DataTable({
@@ -163,6 +186,10 @@ $(document).ready(function () {
             }
         ]
 
+    });
+
+    table.on('draw', function () {
+        autoScrollTable();
     });
 
 });
