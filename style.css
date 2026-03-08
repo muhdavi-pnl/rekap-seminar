@@ -6,17 +6,30 @@
     float: right;
 }
 
+.dataTables_filter,
+.dt-buttons{
+    display:none;
+}
+
+table{
+    font-size:18px;
+}
+
 .w-tanggal {
     width: 150px;
 }
+
 .w-sesi {
     width: 120px;
 }
 
+
 @media screen and (max-width: 768px) {
+    
     .prodi {
         font-size: .8rem;
     }
+    
     .w-tanggal {
         width: 100px;
     }
