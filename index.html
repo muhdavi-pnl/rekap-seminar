@@ -47,6 +47,7 @@
             <th class="w-tanggal">Tanggal</th>
             <th>NIM</th>
             <th>Nama</th>
+            <th>Judul</th>
             <th>Ketua</th>
             <th>Sekretaris</th>
             <th>Pembahas 1</th>
@@ -58,6 +59,7 @@
             <th class="w-tanggal">Tanggal</th>
             <th>NIM</th>
             <th>Nama</th>
+            <th>Judul</th>
             <th>Ketua</th>
             <th>Sekretaris</th>
             <th>Pembahas 1</th>
@@ -125,6 +127,8 @@ $(document).ready(function () {
                 data: 'mahasiswa.nama_mahasiswa',
                 render: capitalizeRenderer
             },
+
+            { data: 'judul' },
 
             {
                 data: 'ketua.nama_lengkap',
