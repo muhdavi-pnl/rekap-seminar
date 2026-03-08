@@ -75,34 +75,91 @@
 <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $('#rekap').DataTable({
-            ajax: 'https://situhir.tik-pnl.web.id/api/rekap-seminar',
-            deferRender: true,      // jika data banyak yang diload sesuia kebutuhan
-            processing: true,
-            columns: [
-                { data: 'tanggal' },
-                { data: 'mahasiswa.nim' },
-                { data: 'mahasiswa.nama_mahasiswa' },
-                { data: 'ketua.nama_lengkap' },
-                { data: 'sekretaris.nama_lengkap' },
-                { data: 'pembahas_1.nama_lengkap' },                
-                { data: 'pembahas_2.nama_lengkap' },
-            ],
-            lengthChange: false,
-            dom: 'Bfrtip',
-            scrollY: '400px',
-            scrollCollapse: true,
-            paging: false,
-            buttons: [
-                {
-                    extend: 'colvis',
-                    collectionLayout: 'fixed columns',
-                    collectionTitle: 'Pilih kolom header/footer'
-                }
-            ]
-        });
+
+function toTitleCase(str) {
+    if (!str) return '';
+    return str.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function formatTanggal(tanggal) {
+    if (!tanggal) return '';
+    
+    const date = new Date(tanggal);
+    
+    return date.toLocaleDateString('id-ID', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
     });
+}
+
+function capitalizeRenderer(data) {
+    return toTitleCase(data);
+}
+
+$(document).ready(function () {
+
+    $('#rekap').DataTable({
+
+        ajax: 'https://situhir.tik-pnl.web.id/api/rekap-seminar',
+
+        processing: true,
+        deferRender: true,
+        paging: false,
+        scrollY: '400px',
+        scrollCollapse: true,
+        lengthChange: false,
+
+        dom: 'Bfrtip',
+
+        columns: [
+
+            {
+                data: 'tanggal',
+                render: data => formatTanggal(data)
+            },
+
+            { data: 'mahasiswa.nim' },
+
+            {
+                data: 'mahasiswa.nama_mahasiswa',
+                render: capitalizeRenderer
+            },
+
+            {
+                data: 'ketua.nama_lengkap',
+                render: capitalizeRenderer
+            },
+
+            {
+                data: 'sekretaris.nama_lengkap',
+                render: capitalizeRenderer
+            },
+
+            {
+                data: 'pembahas_1.nama_lengkap',
+                render: capitalizeRenderer
+            },
+
+            {
+                data: 'pembahas_2.nama_lengkap',
+                render: capitalizeRenderer
+            }
+
+        ],
+
+        buttons: [
+            {
+                extend: 'colvis',
+                collectionLayout: 'fixed columns',
+                collectionTitle: 'Pilih kolom header/footer'
+            }
+        ]
+
+    });
+
+});
+
 </script>
 </body>
 
